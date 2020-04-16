@@ -1,0 +1,11 @@
+{% extends "base_templete.html" %}
+
+{% block content %}
+
+    <h3>Добавить новую платформу</h3>
+<form method="POST" class="post-form">{% csrf_token %}
+    {{form.as_p}}
+    <button type="submit" class="save btn btn-default">Сохранить</button>
+</form>
+
+{% endblock %}
