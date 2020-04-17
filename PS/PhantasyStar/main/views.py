@@ -1,4 +1,4 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import render, get_object_or_404
 from django.views.generic import TemplateView
 from . models import Game, Platform
 from .forms import GameForm, PlatformForm
@@ -34,7 +34,7 @@ def game_detail(request, pk):
 
 def platform_detail(request, pk):
     platform = get_object_or_404(Platform, pk=pk)
-    return render(request, 'main/platform_detail.html', {'platform', platform})
+    return render(request, 'main/platform_detail.html', {'platform': platform})
 
 
 
