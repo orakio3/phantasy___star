@@ -1,19 +1,15 @@
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import TemplateView
+from django.views import generic
+from django.views.generic import TemplateView, ListView
 from . models import Game, Platform
 from .forms import GameForm, PlatformForm
 from django.shortcuts import redirect
 
-class HomeView(TemplateView):
-    template_name = 'index.html'
+class GameListView(generic.ListView):
+    model = Game
+    paginate_by = 8
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data()
-        games = Game.objects.all()
-        context.update({
-            'games': games
-        })
-        return context
+
 
 class PlatformView(TemplateView):
     template_name = 'platform_list.html'
@@ -50,17 +46,16 @@ def our_contacts(request):
     return render(request, 'main/contacts.html', {'contacts': our_contacts})
 
 
-def new_game(request):
+def add_g(request):
     if request.method == 'POST':
         form = GameForm(request.POST)
         if form.is_valid():
-            post = form.save(commit=False)
-            post.author = request.user
-            post.save()
-            return redirect('game_detail', pk=post.pk)
+            game = form.save()
+            game.save()
+            return redirect('game_detail', pk = game.pk)
     else:
-        form = GameForm()
-    return render(request, 'main/new_game.html', {'form': form })
+        form = GameForm
+    return render(request, 'main/new_game.html', {'form': form})
 
 
 def add_p(request):

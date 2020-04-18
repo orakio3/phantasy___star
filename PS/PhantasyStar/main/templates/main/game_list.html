@@ -1,0 +1,32 @@
+{% extends "base_templete.html" %}
+{% block content %}
+<h2><a class="color_genre">Добро пожаловать на сайт, посвященный игре серии Phantasy star</a></h2>
+
+{% for game in game_list %}
+    <ul class="list">
+        <li class="color_genre">
+            <a class="color_text" href="{% url 'game_detail' pk=game.pk %}"> {{game.title}}</a>({% for a in game.genre.all %} {{a}} {% endfor %})
+        </li>
+    </ul>
+{%endfor%}
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

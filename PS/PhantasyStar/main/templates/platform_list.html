@@ -3,9 +3,9 @@
 {% block content %}
 
         {% for platform in platforms %}
-            <ul>
-                <li>
-                    <a href="{% url 'platform_detail' pk=platform.pk %}">{{platform.name}}</a>
+            <ul class="list">
+                <li class="color_genre">
+                    <a class="color_text" href="{% url 'platform_detail' pk=platform.pk %}">{{platform.name}}</a>
                 </li>
             </ul>
         {% endfor %}
