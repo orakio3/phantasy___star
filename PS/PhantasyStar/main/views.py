@@ -7,6 +7,7 @@ from django.shortcuts import redirect
 
 class GameListView(generic.ListView):
     model = Game
+    template_name = 'game_list.html'
     paginate_by = 8
 
 
