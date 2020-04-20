@@ -95,11 +95,11 @@ body{
 }
     /*ШРИФТ ДЛЯ ВСЕГО, тэг <ul>*/
 .list {
-    font-family: 'Kaushan Script', cursive
+    font-family: 'Kaushan Script', cursive;
 }
     /*ЦВЕТ ТЭГА <li>*/
 .color_genre {
-    color: red
+    color: red;
     }
     /*ЦВЕТ ТЭГА <a>(ссылки,типа)*/
 .color_text {
