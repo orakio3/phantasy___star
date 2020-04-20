@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
+from django.template.context_processors import request
 from django.views import generic
-from django.views.generic import TemplateView, ListView
+from django.views.generic import TemplateView
 from . models import Game, Platform
 from .forms import GameForm, PlatformForm
 from django.shortcuts import redirect
@@ -9,6 +10,15 @@ class GameListView(generic.ListView):
     model = Game
     template_name = 'game_list.html'
     paginate_by = 8
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data()
+        games = Game.objects.all()
+        context.update({
+            'games': context
+        })
+        return context
+
 
 
 
@@ -22,6 +32,7 @@ class PlatformView(TemplateView):
             'platforms': platforms
         })
         return context
+
 
 
 

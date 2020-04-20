@@ -8,7 +8,7 @@
 
     <p><strong>{{game.title}}</strong></p>
     <p><strong>Жанр: </strong>{% for genre in game.genre.all %} {{genre}} {% endfor %}</p>
-    <p><strong>Платформа: </strong>{% for platform in game.platforms.all %} {{platform}} {% endfor %}</p>
+    <p><strong>Платформа: </strong>{{ game.platforms}}</p>
     <p><strong>Выпущена: </strong>{{game.release}}</p>
     <p><strong>Описание: </strong>{{game.summary}}</p>
     <p><strong>Прохождение: </strong>{{game.faq}}</p>
