@@ -16,7 +16,7 @@ SECRET_KEY = '8#ag%1gp_@#p*6txaok$9q^4hb=d)zok3s15!^zsym=_+24r+&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['orakio3.pythonanywhere.com']
 
 
 # Application definition
