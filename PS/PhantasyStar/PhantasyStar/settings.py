@@ -16,7 +16,7 @@ SECRET_KEY = '8#ag%1gp_@#p*6txaok$9q^4hb=d)zok3s15!^zsym=_+24r+&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['orakio3.pythonanywhere.com']
+ALLOWED_HOSTS = ['127.0.0.1','orakio3.pythonanywhere.com']
 
 
 # Application definition
@@ -111,6 +111,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = '/home/orakio3/orakio3.pythonanywhere.com/PS/PhantasyStar/static'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'main/static'),
+]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
