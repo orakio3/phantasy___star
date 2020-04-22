@@ -96,13 +96,14 @@ body{
     /*ШРИФТ ДЛЯ ВСЕГО, тэг <ul>*/
 .list {
     font-family: 'Kaushan Script', cursive;
+    color: red;
 }
     /*ЦВЕТ ТЭГА <li>*/
 .color_genre {
-    color: green;
+    color: blue;
     }
     /*ЦВЕТ ТЭГА <a>(ссылки,типа)*/
 .color_text {
+margin: 20px;
     color: yellow;
-}
 

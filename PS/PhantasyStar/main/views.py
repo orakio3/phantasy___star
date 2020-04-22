@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.template.context_processors import request
 from django.views import generic
@@ -6,20 +7,17 @@ from . models import Game, Platform
 from .forms import GameForm, PlatformForm
 from django.shortcuts import redirect
 
-class GameListView(generic.ListView):
+
+
+def HomeView(request):
+    num_visits = request.session.get('num_visits', 0)
+    request.session['num_visits'] = num_visits + 1
+    return render(request, 'home_page.html', context={'num_visits': num_visits})
+
+
+class GamesView(generic.ListView):
     model = Game
-    template_name = 'game_list.html'
     paginate_by = 8
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data()
-        games = Game.objects.all()
-        context.update({
-            'games': context
-        })
-        return context
-
-
 
 
 class PlatformView(TemplateView):

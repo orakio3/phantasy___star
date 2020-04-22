@@ -1,7 +1,6 @@
 {% extends "base_templete.html" %}
 {% block content %}
-<h2><a class="color_genre">Добро пожаловать на сайт, посвященный игре серии Phantasy star</a></h2>
-
+<ul class="list">Посещений: {{ num_visits }}</ul>
 {% for game in game_list %}
     <ul class="list">
         <li class="color_genre">
