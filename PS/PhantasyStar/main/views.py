@@ -1,10 +1,11 @@
+from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.template.context_processors import request
 from django.views import generic
 from django.views.generic import TemplateView
 from . models import Game, Platform
-from .forms import GameForm, PlatformForm
+from .forms import GameForm, PlatformForm, RegForm
 from django.shortcuts import redirect
 
 
@@ -75,6 +76,19 @@ def add_p(request):
         form = PlatformForm
     return render(request, 'main/add_p.html', {'form': form})
 
+
+                            #REGISTRATION VIEWS
+
+def register(request):
+    form_class = RegForm
+    form = form_class(request.POST or None)
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+            return redirect('/main')
+        else:
+            return HttpResponse('Куда ты нахуй ломишься?!', status_code=400)
+    return render(request, 'registration/reg_form.html', {'form': form})
 
 
 

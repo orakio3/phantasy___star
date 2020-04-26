@@ -3,7 +3,9 @@ body{
     font-family: sans-serif;
     font-size: 15px ;
     color: #333 ;
-    line-height: 1.6;}
+    line-height: 1.6;
+    display:block;
+    }
 
 *,
 *:before,
@@ -62,7 +64,6 @@ body{
     left: 0;
     right: 0;
     z-index: 1000;
-    margin-bottom 10px;
 }
 
 
@@ -88,7 +89,6 @@ body{
     display: none;
     background-color: #fff;
 
-
 }
 .nav_link:hover:after {
     display: block;
@@ -97,6 +97,7 @@ body{
 .list {
     font-family: 'Kaushan Script', cursive;
     color: red;
+
 }
     /*ЦВЕТ ТЭГА <li>*/
 .color_genre {
@@ -106,4 +107,9 @@ body{
 .color_text {
 margin: 20px;
     color: yellow;
-
+}
+.black {
+    font-size: 50px;
+    color: green;
+    text-align: center;
+}

@@ -12,13 +12,23 @@
     <div class="container">
         <nav class="nav">
             <a class= "nav_link" href="{% url 'index' %}">Главная</a>
+            <a class= "nav_link" href="{% url 'admin:index' %}">Админка</a>
             <a class= "nav_link" href="{% url 'games' %}">Все Игры</a>
             <a class= "nav_link" href="{% url 'platforms' %}">Все платформы</a>
             <a class= "nav_link" href="{% url 'forum' %}">Форум</a>
             <a class="nav_link" href="{% url 'pp' %}">Дайте денег</a>
             <a class="nav_link" href="{% url 'contacts' %}">О нас</a>
-            <a class="nav_link" href="{% url 'add_p' %}">Добавить платформу</a>
-            <a class="nav_link" href="{% url 'add_g' %}">Добавить Игру</a>
+            <a class="nav_link" href="{% url 'login' %}">Войти</a>
+            <a class="nav_link" href="{% url 'register' %}">Регистрация</a>
+
+                {% if user.is_authenticated %}
+                    <a class="nav_link" href="{% url 'logout' %}">Выйти</a>
+                    {% if user.is_superuser %}
+                        <a class="nav_link" href="{% url 'add_g' %}">Добавить Игру</a>
+                        <a class="nav_link" href="{% url 'add_p' %}">Добавить платформу</a>
+                    {% endif %}
+                {% endif %}
+
 
             <!--СЕССИИ + COOKIE-->
 
@@ -57,16 +67,21 @@
 
         <!-- А ВОТ ТУТ ДЕЛАЙ ШО ХОШ, МНЕ ПОЕБАТЬ :) -->
         <!-- А ВОТ ТУТ ДЕЛАЙ ШО ХОШ, МНЕ ПОЕБАТЬ :) -->
+<ul class="list">Посещений:
+        {% if request.session.num_visits %}
+            {{request.session.num_visits}}
+        {%endif%}
+</ul>
 
 
 </header>
-
     <div class="intro">
         <div class="container">
             <div class="intro_title">Phantasy Star</div>
             <div class="intro_inner"></div>
         </div>
     </div>
+
 
 </body>
 </html>

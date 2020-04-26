@@ -1,0 +1,12 @@
+{% extends "base_templete.html" %}
+
+{% block content %}
+<div class="container">
+    <a class="list"><strong><h1>ЗАЛОГИНИЦА НАХОЙ!</h1></strong></a>
+        <form method="post">
+            {% csrf_token%}
+            {{ form.as_p }}
+            <button type="submit">Login</button>
+        </form>
+</div>
+{% endblock %}
