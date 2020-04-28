@@ -8,6 +8,7 @@
 </head>
 
 <body>
+
 <header class="header">
     <div class="container">
         <nav class="nav">
@@ -18,69 +19,71 @@
             <a class= "nav_link" href="{% url 'forum' %}">Форум</a>
             <a class="nav_link" href="{% url 'pp' %}">Дайте денег</a>
             <a class="nav_link" href="{% url 'contacts' %}">О нас</a>
-            <a class="nav_link" href="{% url 'login' %}">Войти</a>
             <a class="nav_link" href="{% url 'register' %}">Регистрация</a>
-
-                {% if user.is_authenticated %}
-                    <a class="nav_link" href="{% url 'logout' %}">Выйти</a>
-                    {% if user.is_superuser %}
-                        <a class="nav_link" href="{% url 'add_g' %}">Добавить Игру</a>
-                        <a class="nav_link" href="{% url 'add_p' %}">Добавить платформу</a>
-                    {% endif %}
-                {% endif %}
-
-
-            <!--СЕССИИ + COOKIE-->
-
-
-
-                <div class="col-sm-10 ">
-                    {% block content %}
-                    {% endblock %}
-                </div>
+            <a class="nav_link" href="{% url 'login' %}">Войти</a>
         </nav>
     </div>
+    {% block content %}
+    {% endblock %}
 
+        <!-- ЛОГИН -->
+
+    <table>
+        {% if user.is_authenticated %}
+            <ul>
+                <li><a class="color_genre">Пользователь: </a>{{user.get_username}}</li>
+                <li><a class="color_genre" href="/">Профиль</a></li>
+            <a class="list" href="{% url 'logout' %}">Выйти</a>
+            </ul>
+        {% if user.is_superuser %}
+        <ul>
+            <li><a class="list" href="{% url 'add_g' %}">Добавить Игру</a></li>
+            <li><a class="list" href="{% url 'add_p' %}">Добавить платформу</a></li>
+            </ul>
+        {% endif %}
+        {% endif %}
+    </table>
 
     <!-- НИЖЕ ПОСТРАНИЧНЫЙ ВВОД -->
-    <!-- ТУТ НИХУЯ НЕ ТРОГАЙ!!! НЕ ДЫШИ ПРЯМ :) -->
+    <!-- ТУТ НИХУЯ НЕ ТРОГАЙ, КОЛЯН!!! НЕ ДЫШИ ПРЯМ :) -->
 
-
-{% block pagination %}
-    {% if is_paginated %}
-      <div class="pagination">
-          <span class="page-links">
-              {% if page_obj.has_previous %}
-                  <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">previous</a>
-              {% endif %}
-              <span class="page-current">
-                  Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+    {% block pagination %}
+        {% if is_paginated %}
+          <div class="pagination">
+              <span class="page-links">
+                  {% if page_obj.has_previous %}
+                      <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">previous</a>
+                  {% endif %}
+                  <span class="page-current">
+                      Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                  </span>
+                  {% if page_obj.has_next %}
+                      <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">next</a>
+                  {% endif %}
               </span>
-              {% if page_obj.has_next %}
-                  <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">next</a>
-              {% endif %}
-          </span>
-      </div>
-    {% endif %}
-{% endblock %}
+          </div>
+        {% endif %}
+    {% endblock %}
 
+        <!-- СЕССИИ+COOKIE -->
 
-        <!-- А ВОТ ТУТ ДЕЛАЙ ШО ХОШ, МНЕ ПОЕБАТЬ :) -->
-        <!-- А ВОТ ТУТ ДЕЛАЙ ШО ХОШ, МНЕ ПОЕБАТЬ :) -->
-<ul class="list">Посещений:
+    <ul class="list">Посещений:
         {% if request.session.num_visits %}
+
             {{request.session.num_visits}}
-        {%endif%}
-</ul>
 
-
+        {% endif %}
+    </ul>
 </header>
-    <div class="intro">
-        <div class="container">
-            <div class="intro_title">Phantasy Star</div>
-            <div class="intro_inner"></div>
-        </div>
+
+    <!-- А ВОТ ТУТ ДЕЛАЙ ШО ХОШ, МНЕ ПОЕБАТЬ :) -->
+
+<div class="intro">
+    <div class="container">
+        <div class="intro_title">Phantasy Star</div>
+        <div class="intro_inner"></div>
     </div>
+</div>
 
 
 </body>

@@ -16,7 +16,9 @@ urlpatterns = [
     path('new_game/', views.add_g, name='add_g'),
     path('add_platform/', views.add_p, name='add_p'),
     path('login/', LoginView.as_view(), {'template_name': 'registration/login.html'}, name='login'),
+    path('login/welcome/', LoginView.as_view(), {'template_name': 'registration/welcome.html'}, name='welcome'),
     path('logout/', LogoutView.as_view(), {'template_name': 'registration/logout.html'}, name='logout'),
     path('register/', views.register, name='register'),
+    path('register/welcome/', views.welcome, name='welcome'),
 ]
 

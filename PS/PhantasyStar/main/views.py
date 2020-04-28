@@ -85,12 +85,13 @@ def register(request):
     if request.method == 'POST':
         if form.is_valid():
             form.save()
-            return redirect('/main')
+            return redirect('/main/register/welcome/')
         else:
             return HttpResponse('Куда ты нахуй ломишься?!', status_code=400)
     return render(request, 'registration/reg_form.html', {'form': form})
 
-
+def welcome(request):
+    return render(request, 'main/welcome.html', {'welcome':welcome})
 
 
 
